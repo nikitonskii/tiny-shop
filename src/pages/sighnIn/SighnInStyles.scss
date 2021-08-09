@@ -1,0 +1,48 @@
+.SighnInContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+  .SighInForm {
+    background-color: pink;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 15px;
+
+    .SighnInInput {
+      width: 80%;
+      border-radius: 5px;
+      height: 30px;
+      font-size: large;
+      padding-left: 5px;
+    }
+
+    .SignInInputWrong {
+      width: 80%;
+      border-radius: 5px;
+      height: 30px;
+      font-size: large;
+      padding-left: 5px;
+      border: 2px solid red;
+    }
+  }
+
+  .SighnInPopup {
+    height: 300px;
+    width: 300px;
+    background-color: cadetblue;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    flex-direction: column;
+  }
+}
