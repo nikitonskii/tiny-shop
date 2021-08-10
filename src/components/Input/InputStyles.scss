@@ -3,18 +3,37 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0px 0 15px 0;
+  margin: 5px 10px 0px 10px;
 
   .Input {
-    width: 80%;
+    width: 100%;
+    border-radius: 5px;
+    height: 35px;
+    font-size: large;
+    padding-left: 5px;
+    border-color: #0285E4;
+  }
+
+  .InputLabel {
+    display: block;
+    align-self: flex-start;
+    margin: 0px 0px 5px 0px;
+  }
+
+  .InputError {
+    width: 100%;
     border-radius: 5px;
     height: 30px;
     font-size: large;
     padding-left: 5px;
+    border-color: #d90d0d;
   }
 
-  .InputLabelWrapper {
-    display: flex;
-    align-items: flex-start;
-    width: 80%;
+  .InputErrorText {
+    color: #d90d0d;
+    font-size: small;
+    margin: 0;
+    padding: 0;
   }
 }

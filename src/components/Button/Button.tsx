@@ -1,21 +1,18 @@
 import React from "react";
 import './ButtonStyles.scss'
-
-interface IProps {
-  title: string
-  onAction?: React.MouseEventHandler
-  buttonType?: 'submit' | 'reset' | 'button'
-}
+import { IProps } from "./types";
 
 const Button = (props: IProps) => {
+
+  const {buttonType, onAction, title} = props
 
   return (
     <button 
       className='Button'
-      type={props.buttonType}
-      onClick={props.onAction}
+      type={buttonType}
+      onClick={onAction}
     >
-      {props.title}
+      {title}
     </button>
   )
 }
