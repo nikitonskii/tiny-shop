@@ -19,17 +19,17 @@ const SighnIn = () => {
   const [isRepeatedPasswordValid, setIsRepeatedPasswordValid] = useState(false)
 
   const checkFields = () => {
-    if(!firstName.length) setIsFirstNameValid(true)
-    else setIsFirstNameValid(false)
+    if(firstName.length) setIsFirstNameValid(false)
+    else setIsFirstNameValid(true)
 
-    if(!email.length) setIsEmailValid(true)
-    else setIsEmailValid(false)
+    if(email.length) setIsEmailValid(false)
+    else setIsEmailValid(true)
 
-    if(!password.length) setIsPasswordValid(true)
-    else setIsPasswordValid(false)
+    if(password.length) setIsPasswordValid(false)
+    else setIsPasswordValid(true)
 
-    if(!repeatedPassword.length) setIsRepeatedPasswordValid(true)
-    else setIsRepeatedPasswordValid(false)
+    if(repeatedPassword.length) setIsRepeatedPasswordValid(false)
+    else setIsRepeatedPasswordValid(true)
   }
  
   const makeFakeRequest = (e: SyntheticEvent) => {
@@ -37,7 +37,7 @@ const SighnIn = () => {
     checkFields()
     console.log(isFirstNameValid,isEmailValid,isPasswordValid,isRepeatedPasswordValid)
     if(!isFirstNameValid && !isEmailValid && !isPasswordValid && !isRepeatedPasswordValid) {
-      setTimeout(() => setSuccess(true), 5000)
+      setTimeout(() => setSuccess(true), 1000)
     }
   }
 
@@ -45,48 +45,49 @@ const SighnIn = () => {
 
   return (
     <div className='SighnInContainer'>
-      <form className='SighInForm' >
-      <label htmlFor='firstname'>First Name</label>
-      <input
-        className={isFirstNameValid ? 'SignInInputWrong' : 'SighnInInput'}
-        type='text'
-        id='firstname'
-        required
-        onChange={e => setFirstName(e.target.value.trim())}
-      />
-      <label htmlFor='secondname'>Second Name</label>
-      <input
-        className='SighnInInput'
-        type='text'
-        id='secondname'
-        onChange={e => setSecondName(e.target.value.trim())}
-      />
-      <label htmlFor='email'>Email</label>
-      <input
-        className={isEmailValid ? 'SignInInputWrong' : 'SighnInInput'}
-        type='email'
-        id='email'
-        onChange={e => setEmail(e.target.value.trim())}
-      />
-      <label htmlFor='password'>Password</label>
-      <input
-        className={isPasswordValid ? 'SignInInputWrong' : 'SighnInInput'}
-        type='password'
-        id='passwoed'
-        onChange={e => setPassword(e.target.value.trim())}
-      />
-      <label htmlFor='password-repeat'>Password one more time</label>
-      <input
-        className={isRepeatedPasswordValid ? 'SignInInputWrong' : 'SighnInInput'}
-        type='password'
-        id='passwoed-repeat'
-        onChange={e => setRepeatedPassword(e.target.value.trim())}
-      />
-        <Button 
-          title='Send'
-          onAction={makeFakeRequest}
-          buttonType='submit'
+      <form className='SighInForm'>
+        <label htmlFor='firstname' className='SighnInLabel'>First Name</label>
+        <input
+          className={isFirstNameValid ? 'SignInInputWrong' : 'SighnInInput'}
+          type='text'
+          id='firstname'
+          required
+          onChange={e => setFirstName(e.target.value.trim())}
         />
+        <label htmlFor='secondname' className='SighnInLabel'>Second Name</label>
+        <input
+          className='SighnInInput'
+          type='text'
+          id='secondname'
+          onChange={e => setSecondName(e.target.value.trim())}
+        />
+        <label htmlFor='email' className='SighnInLabel'>Email</label>
+        <input
+          className={isEmailValid ? 'SignInInputWrong' : 'SighnInInput'}
+          type='email'
+          id='email'
+          onChange={e => setEmail(e.target.value.trim())}
+        />
+        <label htmlFor='password' className='SighnInLabel'>Password</label>
+        <input
+          className={isPasswordValid ? 'SignInInputWrong' : 'SighnInInput'}
+          type='password'
+          id='passwoed'
+          onChange={e => setPassword(e.target.value.trim())}
+        />
+        <label htmlFor='password-repeat' className='SighnInLabel'>Password one more time</label>
+        <input
+          className={isRepeatedPasswordValid ? 'SignInInputWrong' : 'SighnInInput'}
+          type='password'
+          id='passwoed-repeat'
+          onChange={e => setRepeatedPassword(e.target.value.trim())}
+        />
+        <Input type='text' label='test'/>
+          <Button 
+            title='Send'
+            onAction={makeFakeRequest}
+            buttonType='submit'
+          />
       </form>
       {success
         ? <div className='SighnInPopup'>

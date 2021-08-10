@@ -1,11 +1,20 @@
 .InputContainer {
-  width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   .Input {
-    width: 100%;
+    width: 80%;
     border-radius: 5px;
     height: 30px;
     font-size: large;
     padding-left: 5px;
+  }
+
+  .InputLabelWrapper {
+    display: flex;
+    align-items: flex-start;
+    width: 80%;
   }
 }
