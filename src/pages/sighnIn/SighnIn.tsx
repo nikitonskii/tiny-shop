@@ -4,9 +4,11 @@ import './SighnInStyles.scss';
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import { Fields } from "./types";
+import { regExEmail } from '../../utils/validationPatterns'
 
 const SighnIn = () => {
   const [success, setSuccess] = useState<Boolean>(false)
+  const [visiblePassword, setVisiblePassword] = useState<Boolean>(false)
   const [formFields, setFormFields] = useState<Fields>({
     firstName: '',
     secondName: '',
@@ -29,57 +31,10 @@ const SighnIn = () => {
     })
   }
 
-  const config = [
-    {
-      id: 'firstName',
-      type: 'text',
-      label: 'First name',
-      error: isFieldsValid.isFirstNameValid,
-      onAction: getFieldContent,
-      required: true,
-      placeholder: 'your name',
-      errorText: 'this field must be filled'
-    },
-    {
-      id: 'secondName',
-      type: 'text',
-      label: 'Second name',
-      //error: isFieldsValid.isFirstNameValid,
-      onAction: getFieldContent,
-      required: false,
-      placeholder: 'your second name',
-    },
-    {
-      id: 'email',
-      type: 'email',
-      label: 'Email',
-      error: isFieldsValid.isEmailValid,
-      onAction: getFieldContent,
-      required: true,
-      placeholder: 'email',
-      errorText: 'this field must be filled'
-    },
-    {
-      id: 'password',
-      type: 'password',
-      label: 'Password',
-      error: isFieldsValid.isPasswordValid,
-      onAction: getFieldContent,
-      required: true,
-      placeholder: 'password',
-      errorText: 'this field must be filled'
-    },
-    {
-      id: 'repeatedPassword',
-      type: 'password',
-      label: 'Repeat Password',
-      error: isFieldsValid.isRepeatedPasswordValid,
-      onAction: getFieldContent,
-      required: true,
-      placeholder: 'repeat password',
-      errorText: 'this field must be filled'
-    },
-  ]
+  const showPassword = (e: any) => {
+    e.preventDefault()
+    setVisiblePassword(!visiblePassword)
+  }
 
   const checkFields = () => {
     const state = {
@@ -92,7 +47,7 @@ const SighnIn = () => {
     if(formFields.firstName.length) state.isFirstNameValid = false
     else state.isFirstNameValid = true
 
-    if(formFields.email.length) state.isEmailValid = false
+    if(formFields.email.length && regExEmail.test(formFields.email)) state.isEmailValid = false
     else state.isEmailValid = true
 
     if(formFields.password.length) state.isPasswordValid = false
@@ -114,6 +69,61 @@ const SighnIn = () => {
   }
 
   const closePopup = () => setSuccess(false)
+  
+  const config = [
+    {
+      id: 'firstName',
+      type: 'text',
+      label: 'First name *',
+      error: isFieldsValid.isFirstNameValid,
+      onAction: getFieldContent,
+      required: true,
+      placeholder: 'your name',
+      errorText: 'this field must be filled'
+    },
+    {
+      id: 'secondName',
+      type: 'text',
+      label: 'Second name',
+      //error: isFieldsValid.isFirstNameValid,
+      onAction: getFieldContent,
+      required: false,
+      placeholder: 'your second name',
+    },
+    {
+      id: 'email',
+      type: 'email',
+      label: 'Email *',
+      error: isFieldsValid.isEmailValid,
+      onAction: getFieldContent,
+      required: true,
+      placeholder: 'email',
+      errorText: 'this field must be filled'
+    },
+    {
+      id: 'password',
+      type: visiblePassword ? 'text' : 'password',
+      label: 'Password *',
+      error: isFieldsValid.isPasswordValid,
+      onAction: getFieldContent,
+      required: true,
+      placeholder: 'password',
+      errorText: 'this field must be filled',
+      onIconAction: showPassword,
+      leftIcon: visiblePassword ? 'fas fa-eye' : 'fas fa-eye-slash'
+    },
+    {
+      id: 'repeatedPassword',
+      type: visiblePassword ? 'text' : 'password',
+      label: 'Repeat Password *',
+      error: isFieldsValid.isRepeatedPasswordValid,
+      onAction: getFieldContent,
+      required: true,
+      placeholder: 'repeat password',
+      errorText: 'this field must be filled',
+      onIconAction: showPassword
+    },
+  ]
 
   return (
     <div className='SighnInContainer'>
@@ -129,6 +139,8 @@ const SighnIn = () => {
             required={item.required}
             placeholder={item.placeholder}
             errorText={item.errorText}
+            onIconAction={item.onIconAction}
+            leftIcon={item.leftIcon}
           />
         )}
           <Button 

@@ -11,7 +11,9 @@ const Input = (props: IProps) => {
     onAction, 
     id,
     placeholder,
-    errorText
+    errorText,
+    onIconAction,
+    leftIcon
   } = props
 
   return (
@@ -25,6 +27,7 @@ const Input = (props: IProps) => {
         onChange={(e: any) => onAction(e)}
         placeholder={placeholder}
       />
+      {leftIcon ? <span className='InputIconContainer' onClick={(e: any) => onIconAction(e)}><i className={`${leftIcon} InputIcon`} ></i></span> : null}
       {error ? <p className='InputErrorText'>{errorText}</p> : null}
     </div>
   )

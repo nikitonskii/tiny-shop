@@ -7,4 +7,6 @@ export interface IProps {
   id: string
   placeholder: string
   errorText?: string
+  onIconAction: (e: any) => void
+  leftIcon?: string
 }
