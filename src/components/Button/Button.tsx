@@ -1,14 +1,16 @@
-import React from "react";
-import './ButtonStyles.scss'
-import { IProps } from "./types";
+import React from 'react';
+import './ButtonStyles.scss';
+import { IButtonProps } from '../Button/types';
 
-const Button = (props: IProps) => {
-
-  const {buttonType, onAction, title} = props
+const Button: React.FC<IButtonProps> = ({
+  buttonType,
+  onAction, 
+  title
+}): JSX.Element => {
 
   return (
     <button 
-      className='Button'
+      className='button'
       type={buttonType}
       onClick={onAction}
     >

@@ -1,34 +1,33 @@
-import React from 'react'
-import './InputStyles.scss'
-import {IProps} from './types'
+import React from 'react';
+import './InputStyles.scss';
+import {InputProps} from './types';
 
-const Input = (props: IProps) => {
-  const {
-    label,
-    type, 
-    required, 
-    error, 
-    onAction, 
-    id,
-    placeholder,
-    errorText,
-    onIconAction,
-    leftIcon
-  } = props
-
+const Input: React.FC<InputProps> = ({
+  label,
+  type, 
+  isRequired, 
+  isError, 
+  onAction, 
+  id,
+  placeholder,
+  errorText,
+  onIconAction,
+  leftIcon
+}): JSX.Element => {
+  
   return (
-    <div className='InputContainer'>
-      <label className='InputLabel' htmlFor={label}>{label}</label>
+    <div className='input-container'>
+      <label className='input-label' htmlFor={label}>{label}</label>
       <input
-        className={error ? 'InputError' : 'Input'}
+        className={isError ? 'input-error' : 'input'}
         type={type}
         id={id}
-        required={!!required}
+        required={!!isRequired}
         onChange={(e: any) => onAction(e)}
         placeholder={placeholder}
       />
-      {leftIcon ? <span className='InputIconContainer' onClick={(e: any) => onIconAction(e)}><i className={`${leftIcon} InputIcon`} ></i></span> : null}
-      {error ? <p className='InputErrorText'>{errorText}</p> : null}
+      {leftIcon ? <span className='input-icon-container' onClick={(e: any) => onIconAction(e)}><i className={`${leftIcon} input-icon`} ></i></span> : null}
+      {isError ? <p className='input-error-text'>{errorText}</p> : null}
     </div>
   )
 }

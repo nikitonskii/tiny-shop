@@ -1,8 +1,8 @@
-export interface IProps {
+export interface InputProps {
   label?: string
-  type: string
-  required?: Boolean
-  error?: string | Boolean
+  type: string 
+  isRequired?: Boolean
+  isError?: Boolean
   onAction: (e: any) => void
   id: string
   placeholder: string

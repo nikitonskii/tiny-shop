@@ -1,12 +1,14 @@
-.Button {
-  background-color: #0285E4;
+@import '../../variables.scss';
+
+.button {
+  background-color: $primary-color;
   font-size: small;
   width: 148px;
   height: 52px;
   margin: 10px ;
   box-shadow: 0px 4px 31px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
-  color: #fff;
+  color: $default-color;
   font-size: medium;
   outline: none;
 }
