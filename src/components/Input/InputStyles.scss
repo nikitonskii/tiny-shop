@@ -3,18 +3,59 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0px 0 15px 0;
+  margin: 5px 10px 0px 10px;
+  position: relative;
 
   .Input {
-    width: 80%;
+    width: 100%;
     border-radius: 5px;
-    height: 30px;
+    height: 35px;
     font-size: large;
     padding-left: 5px;
+    border-color: #0285E4;
+    outline: none;
+   
+    &:focus {
+      border: 1px solid #02e40d;
+    }
   }
 
-  .InputLabelWrapper {
-    display: flex;
-    align-items: flex-start;
-    width: 80%;
+  .InputLabel {
+    display: block;
+    align-self: flex-start;
+    margin: 0px 0px 5px 0px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+  }
+
+  .InputError {
+    width: 100%;
+    border-radius: 5px;
+    height: 35px;
+    font-size: large;
+    padding-left: 5px;
+    border-color: #d90d0d;
+    outline: none;
+  }
+
+  .InputErrorText {
+    color: #d90d0d;
+    font-size: small;
+    margin: 0;
+    padding: 0;
+  }
+
+  .InputIconContainer {
+    display: block;
+    position: absolute;
+    top: 35px;
+    right: 10px;
+
+    .InputIcon {
+      display: block;
+      color: rgba(115, 115, 115, 1);
+      font-size: 20px;
+    }
   }
 }

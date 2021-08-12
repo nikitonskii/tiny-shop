@@ -1,30 +1,34 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './InputStyles.scss'
-
-interface IProps {
-  label?: string
-  type: string
-  required?: Boolean
-  error?: string
-}
+import {IProps} from './types'
 
 const Input = (props: IProps) => {
-  const [text, setText] = useState<string | null>(null) 
-  const {label, type, required, error} = props
+  const {
+    label,
+    type, 
+    required, 
+    error, 
+    onAction, 
+    id,
+    placeholder,
+    errorText,
+    onIconAction,
+    leftIcon
+  } = props
 
   return (
     <div className='InputContainer'>
-      <div className='InputLabelWrapper'>
-        <label htmlFor={label}>{label}</label>
-      </div>
+      <label className='InputLabel' htmlFor={label}>{label}</label>
       <input
-        className='Input'
+        className={error ? 'InputError' : 'Input'}
         type={type}
-        id={label}
+        id={id}
         required={!!required}
-        onChange={e => setText(e.target.value.trim())}
+        onChange={(e: any) => onAction(e)}
+        placeholder={placeholder}
       />
-      {error ? <p>Something went wrong</p> : null}
+      {leftIcon ? <span className='InputIconContainer' onClick={(e: any) => onIconAction(e)}><i className={`${leftIcon} InputIcon`} ></i></span> : null}
+      {error ? <p className='InputErrorText'>{errorText}</p> : null}
     </div>
   )
 }
