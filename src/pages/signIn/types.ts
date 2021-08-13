@@ -1,22 +1,20 @@
 
 export interface Fields {
-  [propName: string]: any
+  [propName: string]: string
 }
 
 export interface ValidationFields {
-  [propName: string]: Boolean 
+  [propName: string]: boolean 
 }
 
 export interface ConfigItem {
   label?: string
   type: string 
-  optionalType: string 
-  isRequired?: Boolean
-  isError?: Boolean
-  onAction?: Boolean
-  id: string
+  isRequired: boolean
+  isError?: boolean
+  onAction?: boolean
+  name: string
   placeholder: string
   errorText?: string
-  onIconAction?: Boolean
-  leftIcon?: string
+  passwordType?: boolean
 }

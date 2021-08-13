@@ -1,12 +1,11 @@
 export interface InputProps {
   label?: string
   type: string 
-  isRequired?: Boolean
-  isError?: Boolean
+  isRequired: boolean
+  isError?: boolean
   onAction: (e: any) => void
-  id: string
+  name: string
   placeholder: string
   errorText?: string
-  onIconAction: (e: any) => void
-  leftIcon?: string
+  passwordType?: boolean
 }

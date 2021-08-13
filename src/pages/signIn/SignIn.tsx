@@ -1,122 +1,114 @@
-import React, { SyntheticEvent, useState, useLayoutEffect } from 'react';
+import React, { useState, useLayoutEffect } from "react";
 
-import './SignInStyles.scss';
-import Input from '../../components/Input/Input';
-import Button from '../../components/Button/Button';
-import { config } from './config';
-import { Fields, ValidationFields, ConfigItem } from './types';
+import "./SignInStyles.scss";
+
+import Input from "../../components/Input/Input";
+import Button from "../../components/Button/Button";
+import { ButtonTypes } from "../../components/Button/types";
+
+import { config } from "./config";
+
+import { Fields, ValidationFields, ConfigItem } from "./types";
+
+import { regExEmail } from "../../utils/validationPatterns";
 
 const SignIn: React.FC = (): JSX.Element => {
-  const [success, setSuccess] = useState<Boolean>(false)
-  const [formFields, setFormFields] = useState<Fields>({})
-  const [isFieldsValid, setIsFieldsValid] = useState<ValidationFields>({})
-  const [isShowPassword, setShowPassword] = useState<Boolean>(true)
+  const [success, setSuccess] = useState<boolean>(false);
+  const [formFields, setFormFields] = useState<Fields>({});
+  const [isFieldsValid, setIsFieldsValid] = useState<ValidationFields>({});
 
   useLayoutEffect(() => {
-    let fields: Fields = {}
-    let validationVars: ValidationFields = {}
-    config.forEach((field) => {
-      const {id} = field
-      if(field.isRequired) {
-        fields = {
-          ...fields,
-          [id]: '',
-        }
-        validationVars = {
-          ...validationVars,
-          [id]: false,
-        }
+    const fields: Fields = {};
+    const validationVars: ValidationFields = {};
+
+    config.forEach((field: ConfigItem) => {
+      const { name } = field;
+
+      if (field.isRequired) {
+        fields[name] = "";
+        validationVars[name] = false;
+      } else {
+        fields[name] = "";
       }
-      else {
-        fields = {
-          ...fields,
-          [id]: '',
-        }
-      }
-    })
-    setFormFields(fields)
-    setIsFieldsValid(validationVars)
-  }, [])
+    });
+
+    setFormFields(fields);
+    setIsFieldsValid(validationVars);
+  }, []);
 
   const onChangeFieldsValue = (e: any) => {
-    const {id, value} = e.target
+    const { name, value } = e.target;
+
     setFormFields({
       ...formFields,
-      [id]: value,
-    })
-  }
+      [name]: value,
+    });
+  };
 
-  const showPassword = () => {
-    setShowPassword(!isShowPassword)
-  }
+  const isValidationError = (config: ConfigItem[]): boolean => {
+    const state: ValidationFields = {};
 
-  const checkFields = (config: ConfigItem[]) => {
-    let state: ValidationFields = {}
     config.forEach((field: ConfigItem) => {
-      if(field.isRequired) {
-        state = {
-          ...state,
-          [field.id]: false,
-        }
+      if (field.isRequired) {
+        state[field.name] = false;
       }
-    })
-    const fields = [...Object.keys(state)]
-    fields.forEach((item) => {
-      if(formFields[item].length) state[item] = false
-      else state[item] = true
-    })
-    
-    setIsFieldsValid(state)
-    return [...Object.values(state)].includes(true)
-  }
- 
-  const makeFakeRequest = (e: SyntheticEvent) => {
-    e.preventDefault()
-    const checkResult = checkFields(config)
-    if(!checkResult) {
-      setTimeout(() => setSuccess(true), 1000)
-    }
-  }
+    });
 
-  const closePopup = () => setSuccess(false)
-  
+    const fields = [...Object.keys(state)];
+    fields.forEach((field) => {
+      state[field] = !formFields[field].length;
+    });
+
+    setIsFieldsValid(state);
+
+    return [...Object.values(state)].includes(true);
+  };
+
+  const makeFakeRequest = () => {
+    const checkResult = isValidationError(config);
+
+    if (!checkResult) {
+      setTimeout(() => setSuccess(true), 1000);
+    }
+  };
+
+  const closePopup = () => setSuccess(false);
+
   return (
-    <div className='sign-in-container'>
-      <form className='sign-in-form' onSubmit={() => {}}>
-        {config.map((item: ConfigItem) => 
-          <Input 
-            key={item.id}
-            id={item.id}
-            type={isShowPassword ? item.optionalType : item.type}
+    <div className="sign-in-container">
+      <form className="sign-in-form" onSubmit={() => {}}>
+        {config.map((item: ConfigItem) => (
+          <Input
+            key={item.name}
+            name={item.name}
+            type={item.type}
             label={item.label}
-            isError={isFieldsValid[item.id]}
+            isError={isFieldsValid[item.name]}
             onAction={onChangeFieldsValue}
             isRequired={item.isRequired}
             placeholder={item.placeholder}
             errorText={item.errorText}
-            onIconAction={item.onIconAction ? showPassword : () => {}}
-            leftIcon={item.leftIcon}
+            passwordType={item.passwordType}
           />
-        )}
-          <Button 
-            title='Send'
-            onAction={makeFakeRequest}
-            buttonType='submit'
-          />
+        ))}
+        <Button
+          title="Send"
+          onAction={makeFakeRequest}
+          buttonType={ButtonTypes.button}
+        />
       </form>
-      {success
-        ? <div className='sign-in-popup'>
-            <h3>Congrat Champ !! you did it</h3>
-            <Button 
-              buttonType='button'
-              onAction={closePopup} 
-              title='close me'
-            />
-          </div> 
-        : null
-      }
+      {success && (
+        <div className="sign-in-popup">
+          <h3>Congrat Champ !! you did it</h3>
+          <Button
+            buttonType={ButtonTypes.button}
+            onAction={closePopup}
+            title="close me"
+          />
+        </div>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default SignIn
+export default SignIn;

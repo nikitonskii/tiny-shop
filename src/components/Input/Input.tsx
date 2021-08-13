@@ -1,35 +1,50 @@
-import React from 'react';
-import './InputStyles.scss';
-import {InputProps} from './types';
+import React, { useState } from "react";
+
+import "./InputStyles.scss";
+
+import { InputProps } from "./types";
 
 const Input: React.FC<InputProps> = ({
   label,
-  type, 
-  isRequired, 
-  isError, 
-  onAction, 
-  id,
+  type,
+  isRequired,
+  isError,
+  onAction,
+  name,
   placeholder,
   errorText,
-  onIconAction,
-  leftIcon
+  passwordType,
 }): JSX.Element => {
-  
+  const [isShowPassword, setShowPassword] = useState<boolean>(true);
+  const showPassword = () => setShowPassword(!isShowPassword);
+
   return (
-    <div className='input-container'>
-      <label className='input-label' htmlFor={label}>{label}</label>
+    <div className="input-container">
+      <label className="input-label" htmlFor={label}>
+        {label}
+      </label>
       <input
-        className={isError ? 'input-error' : 'input'}
-        type={type}
-        id={id}
-        required={!!isRequired}
-        onChange={(e: any) => onAction(e)}
+        className={isError ? "error input" : "input"}
+        type={passwordType ? (isShowPassword ? "password" : "text") : type}
+        name={name}
+        required={isRequired}
+        onChange={onAction}
         placeholder={placeholder}
       />
-      {leftIcon ? <span className='input-icon-container' onClick={(e: any) => onIconAction(e)}><i className={`${leftIcon} input-icon`} ></i></span> : null}
-      {isError ? <p className='input-error-text'>{errorText}</p> : null}
+      {passwordType && (
+        <span className="input-icon-container" onClick={showPassword}>
+          <i
+            className={
+              isShowPassword
+                ? "fas fa-eye-slash input-icon"
+                : "fas fa-eye input-icon"
+            }
+          ></i>
+        </span>
+      )}
+      {isError && <p className="input-error-text">{errorText}</p>}
     </div>
-  )
-}
+  );
+};
 
-export default Input
+export default Input;
