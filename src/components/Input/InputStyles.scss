@@ -1,4 +1,12 @@
-.InputContainer {
+@import '../../variables.scss';
+@font-face {
+  font-family: 'Montserrat';
+  src: local('Montserrat'),
+    url('../../fonts/Montserrat-Medium.ttf') format('truetype');
+  font-weight: normal;
+}
+
+.input-container {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -7,54 +15,50 @@
   margin: 5px 10px 0px 10px;
   position: relative;
 
-  .Input {
+  .input {
     width: 100%;
     border-radius: 5px;
     height: 35px;
     font-size: large;
     padding-left: 5px;
-    border-color: #0285E4;
+    border-color: $primary-color;
     outline: none;
-   
+
     &:focus {
-      border: 1px solid #02e40d;
+      border: 1px solid $focused-input;
     }
   }
 
-  .InputLabel {
+  .input-label {
     display: block;
     align-self: flex-start;
     margin: 0px 0px 5px 0px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat-Medium', cursive;
     font-weight: 600;
   }
 
-  .InputError {
-    width: 100%;
-    border-radius: 5px;
-    height: 35px;
-    font-size: large;
-    padding-left: 5px;
-    border-color: #d90d0d;
+  .error {
+    border-color: $error-color;
     outline: none;
   }
 
-  .InputErrorText {
-    color: #d90d0d;
+  .input-error-text {
+    color: $error-color;
     font-size: small;
     margin: 0;
     padding: 0;
   }
 
-  .InputIconContainer {
+  .input-icon-container {
     display: block;
     position: absolute;
     top: 35px;
     right: 10px;
+    cursor: pointer;
 
-    .InputIcon {
+    .input-icon {
       display: block;
-      color: rgba(115, 115, 115, 1);
+      color: $icon-input-color;
       font-size: 20px;
     }
   }

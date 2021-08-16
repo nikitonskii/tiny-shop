@@ -1,5 +1,11 @@
-export interface IProps {
+export interface IButtonProps {
   title: string
-  onAction?: React.MouseEventHandler
-  buttonType?: 'submit' | 'reset' | 'button'
+  onAction?: () => void
+  buttonType?: ButtonTypes
+}
+
+export enum ButtonTypes {
+  submit = 'submit',
+  reset = 'reset',
+  button = 'button'
 }

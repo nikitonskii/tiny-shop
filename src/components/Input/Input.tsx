@@ -1,36 +1,50 @@
-import React from 'react'
-import './InputStyles.scss'
-import {IProps} from './types'
+import React, { useState } from "react";
 
-const Input = (props: IProps) => {
-  const {
-    label,
-    type, 
-    required, 
-    error, 
-    onAction, 
-    id,
-    placeholder,
-    errorText,
-    onIconAction,
-    leftIcon
-  } = props
+import "./InputStyles.scss";
+
+import { InputProps } from "./types";
+
+const Input: React.FC<InputProps> = ({
+  label,
+  type,
+  isRequired,
+  isError,
+  onAction,
+  name,
+  placeholder,
+  errorText,
+  passwordType,
+}): JSX.Element => {
+  const [isShowPassword, setShowPassword] = useState<boolean>(true);
+  const showPassword = () => setShowPassword(!isShowPassword);
 
   return (
-    <div className='InputContainer'>
-      <label className='InputLabel' htmlFor={label}>{label}</label>
+    <div className="input-container">
+      <label className="input-label" htmlFor={label}>
+        {label}
+      </label>
       <input
-        className={error ? 'InputError' : 'Input'}
-        type={type}
-        id={id}
-        required={!!required}
-        onChange={(e: any) => onAction(e)}
+        className={isError ? "error input" : "input"}
+        type={passwordType ? (isShowPassword ? "password" : "text") : type}
+        name={name}
+        required={isRequired}
+        onChange={onAction}
         placeholder={placeholder}
       />
-      {leftIcon ? <span className='InputIconContainer' onClick={(e: any) => onIconAction(e)}><i className={`${leftIcon} InputIcon`} ></i></span> : null}
-      {error ? <p className='InputErrorText'>{errorText}</p> : null}
+      {passwordType && (
+        <span className="input-icon-container" onClick={showPassword}>
+          <i
+            className={
+              isShowPassword
+                ? "fas fa-eye-slash input-icon"
+                : "fas fa-eye input-icon"
+            }
+          ></i>
+        </span>
+      )}
+      {isError && <p className="input-error-text">{errorText}</p>}
     </div>
-  )
-}
+  );
+};
 
-export default Input
+export default Input;
