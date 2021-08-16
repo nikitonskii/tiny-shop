@@ -47,7 +47,6 @@ const SignIn: React.FC = (): JSX.Element => {
 
   const isValidationError = (config: ConfigItem[]): boolean => {
     const state: ValidationFields = {};
-
     config.forEach((field: ConfigItem) => {
       if (field.isRequired) {
         state[field.name] = false;
@@ -56,7 +55,13 @@ const SignIn: React.FC = (): JSX.Element => {
 
     const fields = [...Object.keys(state)];
     fields.forEach((field) => {
-      state[field] = !formFields[field].length;
+      if (field === "email") {
+        regExEmail.test(formFields[field])
+          ? (state[field] = false)
+          : (state[field] = true);
+      } else {
+        state[field] = !formFields[field].length;
+      }
     });
 
     setIsFieldsValid(state);
