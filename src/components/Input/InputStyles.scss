@@ -1,10 +1,4 @@
-@import '../../variables.scss';
-@font-face {
-  font-family: 'Montserrat';
-  src: local('Montserrat'),
-    url('../../fonts/Montserrat-Medium.ttf') format('truetype');
-  font-weight: normal;
-}
+@import "../../variables.scss";
 
 .input-container {
   width: 100%;
@@ -33,7 +27,7 @@
     display: block;
     align-self: flex-start;
     margin: 0px 0px 5px 0px;
-    font-family: 'Montserrat-Medium', cursive;
+    font-family: $primary-font;
     font-weight: 600;
   }
 

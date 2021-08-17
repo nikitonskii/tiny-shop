@@ -1,21 +1,5 @@
 export const config = [
   {
-    name: 'firstName',
-    type: 'text',
-    label: 'First name *',
-    isError: true,
-    isRequired: true,
-    placeholder: 'your name',
-    errorText: 'this field must be filled',
-  },
-  {
-    name: 'secondName',
-    type: 'text',
-    label: 'Second name',
-    isRequired: false,
-    placeholder: 'your second name',
-  },
-  {
     name: 'email',
     type: 'email',
     label: 'Email *',
@@ -31,16 +15,6 @@ export const config = [
     isError: true,
     isRequired: true,
     placeholder: 'password',
-    errorText: 'this field must be filled',
-    passwordType: true,
-  },
-  {
-    name: 'repeatedPassword',
-    type: 'password',
-    label: 'Repeat Password *',
-    isError: true,
-    isRequired: true,
-    placeholder: 'repeat password',
     errorText: 'this field must be filled',
     passwordType: true,
   },
