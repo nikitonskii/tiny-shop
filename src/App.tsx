@@ -1,15 +1,15 @@
 import React from "react";
 
 import logo from "./logo.svg";
-import "./App.scss";
+import "./app.scss";
 
-import SignIn from "./pages/signIn/SignIn";
-import SignUp from "./pages/signUp/SignUp";
+import SignIn from "./pages/signIn";
+import SignUp from "./pages/signUp";
 
 const App: React.FC = (): JSX.Element => {
   return (
-    <div className="App">
-      <img src={logo} className="App-logo" alt="logo" />
+    <div className="app">
+      <img src={logo} className="app-logo" alt="logo" />
       <SignIn />
       <SignUp />
     </div>

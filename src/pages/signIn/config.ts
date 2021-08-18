@@ -1,21 +1,21 @@
 export const config = [
   {
-    name: 'email',
-    type: 'email',
-    label: 'Email *',
+    name: "email",
+    type: "email",
+    label: "Email",
     isError: true,
     isRequired: true,
-    placeholder: 'email',
-    errorText: 'this field must be filled',
+    placeholder: "email",
+    errorText: "this field must be filled",
   },
   {
-    name: 'password',
-    type: 'password',
-    label: 'Password *',
+    name: "password",
+    type: "password",
+    label: "Password",
     isError: true,
     isRequired: true,
-    placeholder: 'password',
-    errorText: 'this field must be filled',
+    placeholder: "password",
+    errorText: "this field must be filled",
     passwordType: true,
   },
-]
+];

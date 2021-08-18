@@ -1,11 +1,10 @@
-.sign-in-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@import "../../variables.scss";
 
-  .sign-in-form {
-    background-color: "#ffff";
+.form-container {
+  width: 100%;
+
+  .form {
+    background-color: $default-color;
     width: 50%;
     height: 50%;
     display: flex;
@@ -16,10 +15,10 @@
     border-radius: 15px;
     box-shadow: 6px 8px 8px 0px rgba(34, 60, 80, 0.34);
     padding: 20px 40px;
-    border-color: #0285e4;
+    border-color: $primary-color;
   }
 
-  .sign-in-buttons-container {
+  .form-buttons-container {
     display: flex;
   }
 }
