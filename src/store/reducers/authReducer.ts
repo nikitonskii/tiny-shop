@@ -1,4 +1,4 @@
-import * as actionTypes from '../actionTypes/authActionTypes';
+import * as actionTypes from "../actionTypes/authActionTypes";
 
 const initialState: actionTypes.AuthStateType = {
   token: null,
@@ -6,37 +6,37 @@ const initialState: actionTypes.AuthStateType = {
   error: null,
   userName: null,
   password: null,
-  email: null
-} 
+  email: null,
+};
 
 export const authReducer = (
   state: actionTypes.AuthStateType = initialState,
-  action: actionTypes.AuthAction
+  action: actionTypes.AuthAction,
 ): actionTypes.AuthStateType => {
-  switch(action.type) {
+  switch (action.type) {
     case actionTypes.AUTH_REQUEST:
       return {
-        ...state
-      }
+        ...state,
+      };
     case actionTypes.AUTH_REQUEST_SUCCESS:
       return {
         ...state,
         token: action.token,
         isLoaded: true,
-      }
+      };
     case actionTypes.AUTH_REQUEST_FAIL:
       return {
         ...state,
         error: action.error,
-        isLoaded: false
-      }
+        isLoaded: false,
+      };
     case actionTypes.AUTH_REGISTRATION_REQUEST:
       return {
         ...state,
         userName: action.userName,
         password: action.password,
-        email: action.email
-      }
+        email: action.email,
+      };
     case actionTypes.LOGOUT:
       return {
         token: null,
@@ -44,9 +44,9 @@ export const authReducer = (
         error: null,
         userName: null,
         password: null,
-        email: null
-      }
+        email: null,
+      };
     default:
-      return state
+      return state;
   }
-}
+};

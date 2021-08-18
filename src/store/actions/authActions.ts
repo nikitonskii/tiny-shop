@@ -1,6 +1,6 @@
-import { Dispatch } from 'redux';
+import { Dispatch } from "redux";
 
-import * as actionTypes from '../actionTypes/authActionTypes';
+import * as actionTypes from "../actionTypes/authActionTypes";
 
 export const setUserCredentials = (
   userName: string,
@@ -10,17 +10,17 @@ export const setUserCredentials = (
   type: actionTypes.AUTH_REGISTRATION_REQUEST,
   userName,
   password,
-  email
-})
+  email,
+});
 
 export const syncRegistrate = (
   userName: string,
   password: string,
   email: string,
 ) => {
-  return function(dispatch:Dispatch<actionTypes.AuthAction>) {
-    dispatch(setUserCredentials(userName,password,email))
-  }
+  return function (dispatch: Dispatch<actionTypes.AuthAction>) {
+    dispatch(setUserCredentials(userName, password, email));
+  };
 };
 
 export const clearAuthStore = (): actionTypes.AuthAction => ({
@@ -29,5 +29,5 @@ export const clearAuthStore = (): actionTypes.AuthAction => ({
 
 export const logout = (dispatch: Dispatch<actionTypes.AuthAction>) => {
   dispatch(clearAuthStore());
-  localStorage.clear()
+  localStorage.clear();
 };
