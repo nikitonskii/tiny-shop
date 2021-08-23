@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-import "./InputStyles.scss";
-
 import { InputProps } from "./types";
 
 const Input: React.FC<InputProps> = ({
@@ -22,7 +20,9 @@ const Input: React.FC<InputProps> = ({
     <div className="input-container">
       <label className="input-label" htmlFor={label}>
         {label}
+        {isRequired && <i className="fas fa-asterisk input-label-icon"></i>}
       </label>
+
       <input
         className={isError ? "error input" : "input"}
         type={passwordType ? (isShowPassword ? "password" : "text") : type}

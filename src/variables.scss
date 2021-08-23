@@ -1,9 +1,25 @@
-// colors 
-$primary-color: #0285E4;
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat"),
+    url("../src/fonts/Montserrat-Medium.ttf") format("truetype");
+  font-weight: normal;
+}
+@font-face {
+  font-family: "DancingScript";
+  src: local("DancingScript"),
+    url("../src/fonts/DancingScript-Bold.ttf") format("truetype");
+  font-weight: normal;
+}
+// colors
+$primary-color: #0285e4;
 $focused-input: #02e40d;
 $error-color: #d90d0d;
-$icon-input-color: 	#737373;
+$icon-input-color: #737373;
 $default-color: #fff;
+$link-color: #61dafb;
+$sadness-color: #282c34;
 
 // fonts
 
+$primary-font: "Montserrat-Medium", cursive;
+$dancing-font: "DancingScript", cursive;

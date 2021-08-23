@@ -1,0 +1,22 @@
+@import "../../variables.scss";
+
+.sign-up-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .sign-up-popup {
+    height: 300px;
+    width: 300px;
+    background-color: $default-color;
+    border: 1px solid #000;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    flex-direction: column;
+    box-shadow: 6px 8px 8px 0px rgba(34, 60, 80, 0.34);
+  }
+}
