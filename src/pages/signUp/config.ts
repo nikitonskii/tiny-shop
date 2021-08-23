@@ -1,6 +1,5 @@
 export const config = [
   {
-<<<<<<< HEAD
     name: "firstName",
     type: "text",
     label: "First name",
@@ -46,50 +45,3 @@ export const config = [
     passwordType: true,
   },
 ];
-=======
-    name: 'firstName',
-    type: 'text',
-    label: 'First name *',
-    isError: true,
-    isRequired: true,
-    placeholder: 'your name',
-    errorText: 'this field must be filled',
-  },
-  {
-    name: 'secondName',
-    type: 'text',
-    label: 'Second name',
-    isRequired: false,
-    placeholder: 'your second name',
-  },
-  {
-    name: 'email',
-    type: 'email',
-    label: 'Email *',
-    isError: true,
-    isRequired: true,
-    placeholder: 'email',
-    errorText: 'this field must be filled',
-  },
-  {
-    name: 'password',
-    type: 'password',
-    label: 'Password *',
-    isError: true,
-    isRequired: true,
-    placeholder: 'password',
-    errorText: 'this field must be filled',
-    passwordType: true,
-  },
-  {
-    name: 'repeatedPassword',
-    type: 'password',
-    label: 'Repeat Password *',
-    isError: true,
-    isRequired: true,
-    placeholder: 'repeat password',
-    errorText: 'this field must be filled',
-    passwordType: true,
-  },
-]
->>>>>>> d979530 (implemented persisted state with local storage)

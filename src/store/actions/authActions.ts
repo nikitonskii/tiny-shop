@@ -2,6 +2,7 @@ import { Dispatch } from "redux";
 
 import * as actionTypes from "../actionTypes/authActionTypes";
 
+// set to store user credentials sync
 export const setUserCredentials = (
   userName: string,
   password: string,
@@ -23,6 +24,7 @@ export const syncRegistrate = (
   };
 };
 
+// auth logou actions
 export const clearAuthStore = (): actionTypes.AuthAction => ({
   type: actionTypes.LOGOUT,
 });

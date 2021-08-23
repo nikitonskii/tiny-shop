@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-export const regExEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
-=======
 import { RootState } from "../store/reducers";
 
 // validation patterns
@@ -41,4 +38,3 @@ export const throttle = (fn: Function, wait: number) => {
     }
   };
 };
->>>>>>> a41c9ed (added semicolons)
