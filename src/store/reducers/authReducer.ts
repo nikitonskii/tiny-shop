@@ -4,6 +4,9 @@ const initialState: actionTypes.AuthStateType = {
   token: null,
   isLoaded: false,
   error: null,
+  userName: null,
+  password: null,
+  email: null
 } 
 
 export const authReducer = (
@@ -26,6 +29,22 @@ export const authReducer = (
         ...state,
         error: action.error,
         isLoaded: false
+      }
+    case actionTypes.AUTH_REGISTRATION_REQUEST:
+      return {
+        ...state,
+        userName: action.userName,
+        password: action.password,
+        email: action.email
+      }
+    case actionTypes.LOGOUT:
+      return {
+        token: null,
+        isLoaded: false,
+        error: null,
+        userName: null,
+        password: null,
+        email: null
       }
     default:
       return state

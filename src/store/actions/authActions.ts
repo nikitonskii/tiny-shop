@@ -1,13 +1,33 @@
+import { Dispatch } from 'redux';
+
 import * as actionTypes from '../actionTypes/authActionTypes';
 
-export const getAuthToken = (
+export const setUserCredentials = (
+  userName: string,
+  password: string,
   email: string,
-  password: string
-): actionTypes.AuthAction => {
-  return {
-    type: actionTypes.AUTH_REQUEST,
-    isLoaded: true,
-    email,
-    password,
+): actionTypes.AuthAction => ({
+  type: actionTypes.AUTH_REGISTRATION_REQUEST,
+  userName,
+  password,
+  email
+})
+
+export const syncRegistrate = (
+  userName: string,
+  password: string,
+  email: string,
+) => {
+  return function(dispatch:Dispatch<actionTypes.AuthAction>) {
+    dispatch(setUserCredentials(userName,password,email))
   }
-}
+};
+
+export const clearAuthStore = (): actionTypes.AuthAction => ({
+  type: actionTypes.LOGOUT,
+});
+
+export const logout = (dispatch: Dispatch<actionTypes.AuthAction>) => {
+  dispatch(clearAuthStore());
+  localStorage.clear()
+};
