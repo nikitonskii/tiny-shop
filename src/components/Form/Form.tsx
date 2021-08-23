@@ -21,17 +21,17 @@ const Form: React.FC<types.FormProps> = ({
   // creates fields dynamicly
   useLayoutEffect(() => {
     const fields: types.Fields = {};
-    const ValidationFields: types.ValidationFields = {};
+    const validationFields: types.ValidationFields = {};
 
     config.forEach((field: types.ConfigItem) => {
       const { name } = field;
 
-      if (field.isRequired) ValidationFields[name] = false;
+      if (field.isRequired) validationFields[name] = false;
       fields[name] = "";
     });
 
     setFormFields(fields);
-    setIsFieldsValid(ValidationFields);
+    setIsFieldsValid(validationFields);
   }, [config]);
 
   const onChangeFieldsValue = (e: any) => {
