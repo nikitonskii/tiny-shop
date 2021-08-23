@@ -2,16 +2,19 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import { config } from "./config";
+import { LoginProps } from "./types";
 
 import Form from "../../components/Form";
 
 import { RootState } from "../../store/reducers";
 
 const SignIn: React.FC = (): JSX.Element => {
-  const { email, password } = useSelector((state: RootState) => state.auth);
+  const { email: storedEmail, password: storedPassword } = useSelector(
+    (state: RootState) => state.auth,
+  );
 
-  const login = (formEmail: string, formPassword: string) => {
-    if (email === formEmail && password === formPassword) {
+  const login = ({ email, password }: LoginProps) => {
+    if (storedEmail === email && storedPassword === password) {
       setTimeout(() => {
         console.log("you are logged !");
       }, 1000);

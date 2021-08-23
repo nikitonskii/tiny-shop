@@ -1,6 +1,6 @@
 export interface FormProps {
   config: ConfigItem[];
-  onSubmit: (email: string, password: string, firstName: string) => void;
+  onSubmit: (prop: Fields) => void;
   buttonTitle: string;
 }
 

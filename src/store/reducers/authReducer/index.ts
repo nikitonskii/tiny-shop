@@ -1,18 +1,18 @@
-import * as actionTypes from "../actionTypes/authActionTypes";
+import * as actionTypes from "../../actionTypes/authActionTypes";
+import * as authInterfaces from "../../types/authInterfaces";
+import { AuthStateType } from "../../types/statesInterfaces";
 
-const initialState: actionTypes.AuthStateType = {
-  token: null,
-  isLoaded: false,
-  error: null,
-  userName: null,
-  password: null,
-  email: null,
-};
+import { initialState } from "./initialState";
 
 export const authReducer = (
-  state: actionTypes.AuthStateType = initialState,
-  action: actionTypes.AuthAction,
-): actionTypes.AuthStateType => {
+  state: AuthStateType = initialState,
+  action:
+    | authInterfaces.AuthRegistrationRequestType
+    | authInterfaces.AuthRequestFailType
+    | authInterfaces.AuthRequestSuccessType
+    | authInterfaces.AuthRequestType
+    | authInterfaces.LogoutType,
+): AuthStateType => {
   switch (action.type) {
     case actionTypes.AUTH_REQUEST:
       return {

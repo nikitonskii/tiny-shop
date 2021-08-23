@@ -71,8 +71,7 @@ const Form: React.FC<types.FormProps> = ({
   const onSubmitForm = () => {
     const checkResult = isValidationError(config);
 
-    if (!checkResult)
-      onSubmit(formFields.email, formFields.password, formFields.firstName);
+    if (!checkResult) onSubmit(formFields);
   };
 
   return (

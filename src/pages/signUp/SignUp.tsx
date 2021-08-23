@@ -5,17 +5,18 @@ import Button from "../../components/Button";
 import { ButtonTypes } from "../../components/Button/types";
 
 import { config } from "./config";
+import { RegisterProp } from "./types";
 
 import Form from "../../components/Form";
 
-import { syncRegistrate } from "../../store/actions/authActions";
+import { setUserCredentials } from "../../store/actions/authActions/registrate";
 
 const SignUp: React.FC = (): JSX.Element => {
   const [success, setSuccess] = useState<boolean>(false);
   const dispatch = useDispatch();
 
-  const register = (firstName: string, password: string, email: string) => {
-    dispatch(syncRegistrate(email, password, firstName));
+  const register = ({ email, password, firstName }: RegisterProp) => {
+    dispatch(setUserCredentials(email, password, firstName));
     setTimeout(() => setSuccess(true), 1000);
   };
 
