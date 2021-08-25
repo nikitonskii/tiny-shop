@@ -6,7 +6,7 @@ import { ButtonTypes } from "../Button/types";
 
 import * as types from "./types";
 
-import * as utils from "../../utils";
+import * as utils from "../../utils/validation";
 
 const Form: React.FC<types.FormProps> = ({
   config,

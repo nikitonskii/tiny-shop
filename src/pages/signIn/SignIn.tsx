@@ -15,9 +15,7 @@ const SignIn: React.FC = (): JSX.Element => {
 
   const login = ({ email, password }: LoginProps) => {
     if (storedEmail === email && storedPassword === password) {
-      setTimeout(() => {
-        console.log("you are logged !");
-      }, 1000);
+      setTimeout(() => console.log("you are logged !"), 1000);
     } else {
       console.log("Goodbye America !");
     }

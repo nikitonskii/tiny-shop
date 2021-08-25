@@ -3,20 +3,19 @@ import { useDispatch } from "react-redux";
 
 import Button from "../../components/Button";
 import { ButtonTypes } from "../../components/Button/types";
+import Form from "../../components/Form";
 
 import { config } from "./config";
 import { RegisterProp } from "./types";
 
-import Form from "../../components/Form";
-
-import { setUserCredentials } from "../../store/actions/authActions/registrate";
+import * as action from "../../store/actions/authActions/registrate";
 
 const SignUp: React.FC = (): JSX.Element => {
   const [success, setSuccess] = useState<boolean>(false);
   const dispatch = useDispatch();
 
   const register = ({ email, password, firstName }: RegisterProp) => {
-    dispatch(setUserCredentials(email, password, firstName));
+    dispatch(action.registration(email, password, firstName));
     setTimeout(() => setSuccess(true), 1000);
   };
 
