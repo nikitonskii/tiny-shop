@@ -1,4 +1,4 @@
-export const throttle = (fn: Function, wait: number) => {
+export const throttleHandler = (fn: Function, wait: number) => {
   let isCalled: boolean = false;
 
   return function (...args: any) {

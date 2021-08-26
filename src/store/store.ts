@@ -4,10 +4,9 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import rootReducer from "./reducers";
 
-import * as utils from "../utils/storeHelpers";
-import { throttle } from "../utils/throttle";
+import * as utils from "../utils";
 
-const persistedState = utils.loadState();
+const persistedState = utils.loadState("authState");
 
 const store = createStore(
   rootReducer,
@@ -16,10 +15,13 @@ const store = createStore(
 );
 
 store.subscribe(
-  throttle(() => {
-    utils.saveState({
-      auth: store.getState().auth,
-    });
+  utils.throttle(() => {
+    utils.saveState(
+      {
+        auth: store.getState().auth,
+      },
+      "authState",
+    );
   }, 1000),
 );
 
