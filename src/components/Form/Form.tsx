@@ -22,9 +22,8 @@ const Form: React.FC<types.FormProps> = ({ config, onSubmit, buttonTitle }): JSX
     config.forEach((field: types.ConfigItem) => {
       const { name } = field;
 
-      if (field.required) {
-        validationFields[name] = "";
-      }
+      if (field.required) validationFields[name] = "";
+
       fields[name] = "";
     });
 
@@ -42,7 +41,7 @@ const Form: React.FC<types.FormProps> = ({ config, onSubmit, buttonTitle }): JSX
   };
 
   // validates form fields
-  const isValidationErrorTest = (config: types.ConfigItem[]) => {
+  const isValidationError = (config: types.ConfigItem[]): boolean => {
     const state: types.ValidationFields = {};
     let fields = [];
 
@@ -75,7 +74,7 @@ const Form: React.FC<types.FormProps> = ({ config, onSubmit, buttonTitle }): JSX
   };
 
   const onSubmitForm = () => {
-    const isFormValid = isValidationErrorTest(config);
+    const isFormValid = isValidationError(config);
 
     if (isFormValid) onSubmit(formFields);
   };
