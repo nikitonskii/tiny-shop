@@ -8,7 +8,7 @@ import * as types from "./types";
 
 import * as utils from "../../utils";
 
-import * as constants from "../../constants";
+import * as constants from "../../variables";
 
 const Form: React.FC<types.FormProps> = ({ config, onSubmit, buttonTitle }): JSX.Element => {
   const [formFields, setFormFields] = useState<types.Fields>({});
