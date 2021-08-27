@@ -1,14 +1,14 @@
 import React from "react";
 
-import logo from "./logo.svg";
 import "./app.scss";
 
 import Router from "./router";
+import Navigation from "./components/Navigation";
 
 const App: React.FC = (): JSX.Element => {
   return (
     <div className="app">
-      <img src={logo} className="app-logo" alt="logo" />
+      <Navigation />
       <Router />
     </div>
   );
