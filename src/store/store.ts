@@ -1,11 +1,28 @@
-import { createStore, applyMiddleware } from 'redux';
-import thunkMiddleware from 'redux-thunk';
-import rootReducer from './reducers';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { createStore, applyMiddleware } from "redux";
+import thunkMiddleware from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
+
+import rootReducer from "./reducers";
+
+import * as utils from "../utils";
+
+const persistedState = utils.loadState("authState");
 
 const store = createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(thunkMiddleware))
+  persistedState,
+  composeWithDevTools(applyMiddleware(thunkMiddleware)),
 );
 
-export default store
+store.subscribe(
+  utils.throttle(() => {
+    utils.saveState(
+      {
+        auth: store.getState().auth,
+      },
+      "authState",
+    );
+  }, 1000),
+);
+
+export default store;

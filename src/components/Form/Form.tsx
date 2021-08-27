@@ -8,15 +8,11 @@ import * as types from "./types";
 
 import * as utils from "../../utils";
 
-const Form: React.FC<types.FormProps> = ({
-  config,
-  onSubmit,
-  buttonTitle,
-}): JSX.Element => {
+import * as constants from "../../variables";
+
+const Form: React.FC<types.FormProps> = ({ config, onSubmit, buttonTitle }): JSX.Element => {
   const [formFields, setFormFields] = useState<types.Fields>({});
-  const [isFieldsValid, setIsFieldsValid] = useState<types.ValidationFields>(
-    {},
-  );
+  const [isFieldsValid, setIsFieldsValid] = useState<types.ValidationFields>({});
 
   // creates fields dynamicly
   useLayoutEffect(() => {
@@ -26,7 +22,8 @@ const Form: React.FC<types.FormProps> = ({
     config.forEach((field: types.ConfigItem) => {
       const { name } = field;
 
-      if (field.isRequired) validationFields[name] = false;
+      if (field.required) validationFields[name] = "";
+
       fields[name] = "";
     });
 
@@ -49,30 +46,37 @@ const Form: React.FC<types.FormProps> = ({
     let fields = [];
 
     config.forEach((field: types.ConfigItem) => {
-      if (field.isRequired) {
-        state[field.name] = false;
+      if (field.required) {
+        state[field.name] = "";
       }
     });
 
     fields = [...Object.keys(state)];
     fields.forEach((field) => {
       if (field === "email") {
-        state[field] = !utils.regExEmail.test(formFields[field]);
+        !utils.validateEmail.test(formFields[field])
+          ? (state[field] = constants.errors.wrongEmail)
+          : (state[field] = "");
+      } else if (field === "repeatedPassword" && formFields[field].length) {
+        formFields[field] === formFields.password
+          ? (state[field] = "")
+          : (state[field] = constants.errors.repeatedPassword);
+      } else if (formFields[field].length) {
+        state[field] = "";
       } else {
-        state[field] = !formFields[field].length;
+        state[field] = constants.errors.emptyField;
       }
     });
 
     setIsFieldsValid(state);
 
-    return Object.values(state).includes(true);
+    return Object.values(state).every((item: any) => !item.length);
   };
 
   const onSubmitForm = () => {
-    const checkResult = isValidationError(config);
+    const isFormValid = isValidationError(config);
 
-    if (!checkResult)
-      onSubmit(formFields.email, formFields.password, formFields.firstName);
+    if (isFormValid) onSubmit(formFields);
   };
 
   return (
@@ -84,19 +88,14 @@ const Form: React.FC<types.FormProps> = ({
             name={item.name}
             type={item.type}
             label={item.label}
-            isError={isFieldsValid[item.name]}
-            onAction={onChangeFieldsValue}
-            isRequired={item.isRequired}
+            onChange={onChangeFieldsValue}
+            required={item.required}
             placeholder={item.placeholder}
-            errorText={item.errorText}
+            errorText={isFieldsValid[item.name]}
             passwordType={item.passwordType}
           />
         ))}
-        <Button
-          title={buttonTitle}
-          onClick={onSubmitForm}
-          buttonType={ButtonTypes.button}
-        />
+        <Button title={buttonTitle} onClick={onSubmitForm} buttonType={ButtonTypes.button} />
       </form>
     </div>
   );
