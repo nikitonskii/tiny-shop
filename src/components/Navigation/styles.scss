@@ -1,0 +1,24 @@
+@import "../../variables.scss";
+
+.navigation-container {
+  width: 100%;
+  background-color: $sadness-color;
+  box-shadow: 6px 8px 8px 0px rgba(34, 60, 80, 0.34);
+  margin: 0px 0px 10px 0px;
+
+  .navigation-link-container {
+    display: flex;
+    justify-content: space-around;
+
+    li {
+      list-style: none;
+    }
+
+    .navigation-link {
+      color: $default-color;
+      font-family: $dancing-font;
+      text-decoration: none;
+      font-size: calc(10px + 2vmin);
+    }
+  }
+}
