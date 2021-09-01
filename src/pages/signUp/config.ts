@@ -26,7 +26,7 @@ export const config = [
     label: "Password",
     required: true,
     placeholder: "password",
-    passwordType: true,
+    isShowPasswordIcon: true,
   },
   {
     name: "repeatedPassword",
@@ -34,6 +34,6 @@ export const config = [
     label: "Repeat Password",
     required: true,
     placeholder: "repeat password",
-    passwordType: true,
+    isShowPasswordIcon: true,
   },
 ];

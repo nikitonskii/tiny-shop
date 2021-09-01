@@ -10,7 +10,7 @@ const Input: React.FC<InputProps> = ({
   name,
   placeholder,
   errorText,
-  passwordType,
+  isShowPasswordIcon,
 }): JSX.Element => {
   const [isShowPassword, setShowPassword] = useState<boolean>(true);
   const showPassword = () => setShowPassword(!isShowPassword);
@@ -23,13 +23,13 @@ const Input: React.FC<InputProps> = ({
       </label>
       <input
         className={errorText ? "error input" : "input"}
-        type={passwordType ? (isShowPassword ? "password" : "text") : type}
+        type={isShowPasswordIcon ? (isShowPassword ? "password" : "text") : type}
         name={name}
         required={required}
         onChange={onChange}
         placeholder={placeholder}
       />
-      {passwordType && (
+      {isShowPasswordIcon && (
         <span className="input-icon-container" onClick={showPassword}>
           <i
             className={isShowPassword ? "fas fa-eye-slash input-icon" : "fas fa-eye input-icon"}

@@ -1,6 +1,4 @@
-import { RootState } from "../../store/reducers";
-
-export const saveStateHelper = (state: RootState, stateName: string) => {
+export const saveState = (state: any, stateName: string) => {
   try {
     const serializedState = JSON.stringify(state);
     localStorage.setItem(stateName, serializedState);

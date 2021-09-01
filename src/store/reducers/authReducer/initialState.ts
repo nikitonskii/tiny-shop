@@ -1,7 +1,7 @@
 import { AuthStateType } from "../../types/statesInterfaces";
 
 export const initialState: AuthStateType = {
-  token: null,
+  token: false,
   isLoaded: false,
   error: null,
   userName: null,

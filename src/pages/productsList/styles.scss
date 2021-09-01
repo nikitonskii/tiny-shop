@@ -1,0 +1,19 @@
+@import "../../variables.scss";
+
+.products-list-container {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+
+  .product-list-wrapper {
+    width: calc(100% / 2 - 1rem);
+  }
+
+  .products-list-gallery {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

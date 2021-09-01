@@ -6,5 +6,5 @@ export interface InputProps {
   name: string;
   placeholder: string;
   errorText?: string;
-  passwordType?: boolean;
+  isShowPasswordIcon?: boolean;
 }

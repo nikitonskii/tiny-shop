@@ -1,0 +1,46 @@
+@import "../../variables.scss";
+
+.product-card-container {
+  border: solid 1px $sadness-color;
+  padding: 5px;
+  border-radius: 10px;
+  margin: 4px;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  .product-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .product-card-image-wrapper {
+    width: 200px;
+  }
+
+  .product-card-text {
+    font-family: $primary-font;
+  }
+
+  .product-card-title {
+    font-family: $dancing-font;
+    font-weight: bolder;
+    font-size: 25px;
+    margin: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .card-logo {
+    animation: card-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes card-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -12,6 +12,6 @@ export const config = [
     label: "Password",
     required: true,
     placeholder: "password",
-    passwordType: true,
+    isShowPasswordIcon: true,
   },
 ];

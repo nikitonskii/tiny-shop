@@ -2,7 +2,7 @@ import * as actionTypes from "../../actionTypes/authActionTypes";
 import * as authInterfaces from "../../types/authInterfaces";
 
 // auth logout actions
-export const clearAuthStore = (): authInterfaces.LogoutType => ({
+export const logout = (): authInterfaces.LogoutType => ({
   type: actionTypes.LOGOUT,
 });
 

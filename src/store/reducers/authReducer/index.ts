@@ -11,7 +11,8 @@ export const authReducer = (
     | authInterfaces.AuthRequestFailType
     | authInterfaces.AuthRequestSuccessType
     | authInterfaces.AuthRequestType
-    | authInterfaces.LogoutType,
+    | authInterfaces.LogoutType
+    | authInterfaces.AuthLoginType,
 ): AuthStateType => {
   switch (action.type) {
     case actionTypes.AUTH_REQUEST:
@@ -45,6 +46,11 @@ export const authReducer = (
         userName: null,
         password: null,
         email: null,
+      };
+    case actionTypes.AUTH_LOGIN:
+      return {
+        ...state,
+        token: true,
       };
     default:
       return state;

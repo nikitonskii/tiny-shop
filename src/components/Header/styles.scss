@@ -1,0 +1,22 @@
+@import "../../variables.scss";
+
+.header-container {
+  width: 100%;
+  background-color: $sadness-color;
+  box-shadow: 6px 8px 8px 0px rgba(34, 60, 80, 0.34);
+  margin: 0px 0px 10px 0px;
+  display: flex;
+  align-items: center;
+
+  .header-icon-wrapper {
+    display: block;
+    cursor: pointer;
+
+    .header-icon {
+      display: block;
+      color: $default-color;
+      font-size: calc(10px + 2vmin);
+      margin: 0px 20px 0px 0px;
+    }
+  }
+}

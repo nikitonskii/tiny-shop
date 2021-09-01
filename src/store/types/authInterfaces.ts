@@ -26,13 +26,11 @@ export interface AuthRegistrationRequestType {
   password: string;
 }
 
-export interface AuthRegistrationRequestType {
-  type: typeof authActionTypes.AUTH_REGISTRATION_REQUEST;
-  userName: string;
-  email: string;
-  password: string;
-}
-
 export interface LogoutType {
   type: typeof authActionTypes.LOGOUT;
+}
+
+export interface AuthLoginType {
+  type: typeof authActionTypes.AUTH_LOGIN;
+  token: boolean;
 }

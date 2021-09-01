@@ -1,5 +1,5 @@
 // local storage
-export const loadStateHelper = (stateName: string) => {
+export const loadState = (stateName: string) => {
   try {
     const serializedState = localStorage.getItem(stateName);
     if (serializedState === null) {
