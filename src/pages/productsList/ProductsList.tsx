@@ -4,28 +4,28 @@ import Masonry from "react-masonry-component";
 
 import ProductCard from "../../components/ProductCard";
 
-import { getProducts } from "../../store/actions/productsActions/getProducts";
+import { productsActions } from "../../store/actions/productsActions/getProducts";
 import { productsStateSelector } from "../../store/reducers/productsReducer/selectors";
 
 import { ProductItem } from "../../types/products";
 
 const ProductsList: React.FC = (): JSX.Element => {
-  const dispatch = useDispatch();
-  const { isLoaded, results } = useSelector(productsStateSelector);
+  const dispatch: any = useDispatch();
+  const { isLoaded, results, error } = useSelector(productsStateSelector);
 
   // products request
   useEffect(() => {
-    dispatch(getProducts(1));
-  }, [dispatch]);
+    dispatch(productsActions.getProducts(1));
+  }, []);
 
   return (
     <div className="products-list-container">
-      <Masonry className="products-list-gallery">
-        {isLoaded ? (
-          results?.map((product: ProductItem, index: number) => {
+      {isLoaded && !error ? (
+        <Masonry className="products-list-gallery" elementType="ul">
+          {results?.map((product: ProductItem, index: number) => {
             if (index % 2 === 0) {
               return (
-                <div className="product-list-wrapper" key={product.created}>
+                <li className="product-list-wrapper" key={product.created}>
                   <ProductCard
                     name={product.name}
                     model={product.model}
@@ -33,20 +33,21 @@ const ProductsList: React.FC = (): JSX.Element => {
                     vehicle_class={product.vehicle_class}
                     created={product.created}
                   />
-                </div>
+                </li>
               );
             } else {
               return (
-                <div className="product-list-wrapper" key={product.created}>
-                  <ProductCard {...product} cargo_capacity={product.cargo_capacity} />
-                </div>
+                <li className="product-list-wrapper" key={product.created}>
+                  <ProductCard {...product} />
+                </li>
               );
             }
-          })
-        ) : (
-          <h2>Loading .....</h2>
-        )}
-      </Masonry>
+          })}
+        </Masonry>
+      ) : (
+        <h2>Loading .....</h2>
+      )}
+      {error && <h2>{error}</h2>}
     </div>
   );
 };

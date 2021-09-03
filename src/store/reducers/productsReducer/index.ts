@@ -12,9 +12,10 @@ export const productsReducer = (
     | productsInterfaces.ProductsFailType,
 ): ProductsStateType => {
   switch (action.type) {
-    case actionTypes.GET_PRODUCTS_REQUEST:
+    case actionTypes.GET_PRODUCTS_PENDING:
       return {
         ...state,
+        isLoaded: false,
       };
     case actionTypes.GET_PRODUCTS_SUCCESS:
       return {
@@ -29,7 +30,7 @@ export const productsReducer = (
       return {
         ...state,
         error: action.error,
-        isLoaded: false,
+        isLoaded: true,
       };
     default:
       return state;

@@ -10,7 +10,7 @@ const Navigation: React.FC = (): JSX.Element => {
   const { token } = useSelector(authStateSelector);
 
   return (
-    <div className="navigation-container">
+    <nav className="navigation-container">
       <ul className="navigation-link-container">
         {token ? (
           <>
@@ -45,7 +45,7 @@ const Navigation: React.FC = (): JSX.Element => {
           </>
         )}
       </ul>
-    </div>
+    </nav>
   );
 };
 

@@ -2,7 +2,8 @@ import * as actionTypes from "../actionTypes/productsActionTypes";
 import { ProductItem } from "../../types/products";
 
 export interface ProductsRequestType {
-  type: typeof actionTypes.GET_PRODUCTS_REQUEST;
+  type: typeof actionTypes.GET_PRODUCTS_PENDING;
+  isLoaded: boolean;
 }
 
 export interface ProductsSuccesType {

@@ -26,8 +26,16 @@ export interface AuthRegistrationRequestType {
   password: string;
 }
 
-export interface LogoutType {
-  type: typeof authActionTypes.LOGOUT;
+export interface LogoutRequestSuccessType {
+  type: typeof authActionTypes.LOGOUT_SUCCESS;
+}
+
+export interface LogoutRequestPendingType {
+  type: typeof authActionTypes.LOGOUT_PENDING;
+}
+
+export interface LogoutRequestFailType {
+  type: typeof authActionTypes.LOGOUT_FAIL;
 }
 
 export interface AuthLoginType {

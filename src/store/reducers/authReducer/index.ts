@@ -11,7 +11,9 @@ export const authReducer = (
     | authInterfaces.AuthRequestFailType
     | authInterfaces.AuthRequestSuccessType
     | authInterfaces.AuthRequestType
-    | authInterfaces.LogoutType
+    | authInterfaces.LogoutRequestFailType
+    | authInterfaces.LogoutRequestPendingType
+    | authInterfaces.LogoutRequestSuccessType
     | authInterfaces.AuthLoginType,
 ): AuthStateType => {
   switch (action.type) {
@@ -38,7 +40,7 @@ export const authReducer = (
         password: action.password,
         email: action.email,
       };
-    case actionTypes.LOGOUT:
+    case actionTypes.LOGOUT_SUCCESS:
       return {
         token: null,
         isLoaded: false,
@@ -46,6 +48,14 @@ export const authReducer = (
         userName: null,
         password: null,
         email: null,
+      };
+    case actionTypes.LOGOUT_PENDING:
+      return {
+        ...state,
+      };
+    case actionTypes.LOGOUT_FAIL:
+      return {
+        ...state,
       };
     case actionTypes.AUTH_LOGIN:
       return {

@@ -5,15 +5,17 @@
   flex: 1;
   display: flex;
   justify-content: center;
+  margin: 10px 0px;
+  text-align: center;
 
   .product-list-wrapper {
-    width: calc(100% / 2 - 1rem);
+    width: calc(100% / 2);
+    display: block;
   }
 
   .products-list-gallery {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 0 auto;
+    padding: 0px;
   }
 }

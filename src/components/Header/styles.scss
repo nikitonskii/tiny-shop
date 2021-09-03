@@ -8,15 +8,19 @@
   display: flex;
   align-items: center;
 
-  .header-icon-wrapper {
-    display: block;
+  .header-icon-button {
     cursor: pointer;
+    background-color: $sadness-color;
+    border: none;
 
     .header-icon {
       display: block;
       color: $default-color;
       font-size: calc(10px + 2vmin);
       margin: 0px 20px 0px 0px;
+    }
+    .header-icon:hover {
+      color: $primary-color;
     }
   }
 }
