@@ -16,9 +16,8 @@ export interface ConfigItem {
   label?: string;
   type: string;
   required: boolean;
-  isError?: boolean;
   name: string;
   placeholder: string;
   errorText?: string;
-  passwordType?: boolean;
+  isShowPasswordIcon?: boolean;
 }

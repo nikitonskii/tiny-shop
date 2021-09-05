@@ -2,7 +2,7 @@ import React from "react";
 
 const NotFound: React.FC = (): JSX.Element => {
   return (
-    <div className="home-container">
+    <div className="not-found-container">
       <h2>404 davai dosvidaniia !</h2>
     </div>
   );

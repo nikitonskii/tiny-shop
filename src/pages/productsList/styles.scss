@@ -1,0 +1,21 @@
+@import "../../variables.scss";
+
+.products-list-container {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0px;
+  text-align: center;
+
+  .product-list-wrapper {
+    width: calc(100% / 2);
+    display: block;
+  }
+
+  .products-list-gallery {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0px;
+  }
+}

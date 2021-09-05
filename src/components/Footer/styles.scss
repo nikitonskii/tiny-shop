@@ -1,0 +1,9 @@
+@import "../../variables.scss";
+
+.footer-container {
+  width: 100%;
+  background-color: $sadness-color;
+  font-size: calc(10px + 2vmin);
+  font-family: $dancing-font;
+  box-shadow: 16px 8px 8px 20px rgba(34, 60, 80, 0.34);
+}

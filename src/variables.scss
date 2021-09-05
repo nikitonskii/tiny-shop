@@ -1,13 +1,11 @@
 @font-face {
   font-family: "Montserrat";
-  src: local("Montserrat"),
-    url("../src/fonts/Montserrat-Medium.ttf") format("truetype");
+  src: local("Montserrat"), url("../src/assets/fonts/Montserrat-Medium.ttf") format("truetype");
   font-weight: normal;
 }
 @font-face {
   font-family: "DancingScript";
-  src: local("DancingScript"),
-    url("../src/fonts/DancingScript-Bold.ttf") format("truetype");
+  src: local("DancingScript"), url("../src/assets/fonts/DancingScript-Bold.ttf") format("truetype");
   font-weight: normal;
 }
 // colors

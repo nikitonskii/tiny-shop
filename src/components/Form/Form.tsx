@@ -6,9 +6,7 @@ import { ButtonTypes } from "../Button/types";
 
 import * as types from "./types";
 
-import * as utils from "../../utils";
-
-import * as constants from "../../variables";
+import { isValidationError } from "./validation";
 
 const Form: React.FC<types.FormProps> = ({ config, onSubmit, buttonTitle }): JSX.Element => {
   const [formFields, setFormFields] = useState<types.Fields>({});
@@ -40,41 +38,8 @@ const Form: React.FC<types.FormProps> = ({ config, onSubmit, buttonTitle }): JSX
     });
   };
 
-  // validates form fields
-  const isValidationError = (config: types.ConfigItem[]): boolean => {
-    const state: types.ValidationFields = {};
-    let fields = [];
-
-    config.forEach((field: types.ConfigItem) => {
-      if (field.required) {
-        state[field.name] = "";
-      }
-    });
-
-    fields = [...Object.keys(state)];
-    fields.forEach((field) => {
-      if (field === "email") {
-        !utils.validateEmail.test(formFields[field])
-          ? (state[field] = constants.errors.wrongEmail)
-          : (state[field] = "");
-      } else if (field === "repeatedPassword" && formFields[field].length) {
-        formFields[field] === formFields.password
-          ? (state[field] = "")
-          : (state[field] = constants.errors.repeatedPassword);
-      } else if (formFields[field].length) {
-        state[field] = "";
-      } else {
-        state[field] = constants.errors.emptyField;
-      }
-    });
-
-    setIsFieldsValid(state);
-
-    return Object.values(state).every((item: any) => !item.length);
-  };
-
   const onSubmitForm = () => {
-    const isFormValid = isValidationError(config);
+    const isFormValid = isValidationError(config, setIsFieldsValid, formFields);
 
     if (isFormValid) onSubmit(formFields);
   };
@@ -92,7 +57,7 @@ const Form: React.FC<types.FormProps> = ({ config, onSubmit, buttonTitle }): JSX
             required={item.required}
             placeholder={item.placeholder}
             errorText={isFieldsValid[item.name]}
-            passwordType={item.passwordType}
+            isShowPasswordIcon={item.isShowPasswordIcon}
           />
         ))}
         <Button title={buttonTitle} onClick={onSubmitForm} buttonType={ButtonTypes.button} />
