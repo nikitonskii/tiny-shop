@@ -4,4 +4,5 @@ export enum NavLinks {
   signUp = "/sign-up",
   products = "/products-list",
   notFound = "/not-found",
+  cart = "/cart",
 }

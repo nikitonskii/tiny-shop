@@ -8,6 +8,7 @@ import NotFound from "./pages/notFound";
 import ProductsList from "./pages/productsList";
 
 import { NavLinks } from "./types/navLinks";
+import Cart from "./pages/cart";
 
 const Router: React.FC = (): JSX.Element => {
   return (
@@ -24,6 +25,9 @@ const Router: React.FC = (): JSX.Element => {
         </Route>
         <Route path={NavLinks.products}>
           <ProductsList />
+        </Route>
+        <Route path={NavLinks.cart}>
+          <Cart />
         </Route>
         <Route path={NavLinks.notFound}>
           <NotFound />

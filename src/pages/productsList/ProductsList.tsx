@@ -38,7 +38,14 @@ const ProductsList: React.FC = (): JSX.Element => {
             } else {
               return (
                 <li className="product-list-wrapper" key={product.created}>
-                  <ProductCard {...product} />
+                  <ProductCard
+                    name={product.name}
+                    model={product.model}
+                    cost_in_credits={product.cost_in_credits}
+                    vehicle_class={product.vehicle_class}
+                    created={product.created}
+                    cargo_capacity={product.cargo_capacity}
+                  />
                 </li>
               );
             }

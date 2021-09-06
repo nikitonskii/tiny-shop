@@ -19,3 +19,8 @@ export interface ProductsStateType {
   error?: string | Error | null;
   isLoaded: boolean;
 }
+
+// CART
+export interface CartStateType {
+  addedProducts: ProductItem[];
+}

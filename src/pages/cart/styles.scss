@@ -1,0 +1,12 @@
+@import "../../variables.scss";
+
+.cart-container {
+  flex: 1;
+
+  li,
+  ul {
+    list-style-type: none;
+    padding: 3px;
+    margin: 3px;
+  }
+}
