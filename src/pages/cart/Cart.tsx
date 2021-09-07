@@ -13,7 +13,7 @@ const Cart: React.FC = (): JSX.Element => {
       <h1>Here is a card page!</h1>
       <ul>
         {addedProducts.map((item: ProductItem) => (
-          <li key={item.created}>
+          <li key={`${item.created} + ${Math.random()}`}>
             <CartItem {...item} />
           </li>
         ))}

@@ -13,8 +13,8 @@ const CartItem: React.FC<ProductItem> = ({
 }): JSX.Element => {
   const dispatch = useDispatch();
 
-  const deleteProduct = (id: string | number) =>
-    dispatch(cartActions.removeFromCart(id));
+  const deleteProduct = (created: string) =>
+    dispatch(cartActions.removeFromCart(created));
 
   return (
     <div className="cart-item-container">

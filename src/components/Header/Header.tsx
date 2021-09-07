@@ -15,6 +15,7 @@ const Header: React.FC = (): JSX.Element => {
   const { token } = useSelector(authStateSelector);
   const { addedProducts } = useSelector(cartStateSelector);
   const history = useHistory();
+  const amountCartProducts = addedProducts.length;
 
   const logOut = () => {
     dispatch(logoutActions.logout())
@@ -34,13 +35,11 @@ const Header: React.FC = (): JSX.Element => {
           </button>
           <button className="header-icon-button" onClick={moveToCart}>
             <i className="fas fa-shopping-cart header-icon"></i>
-            {addedProducts.length && (
-              <span className="header-cart-badge">
-                <p className="header-cart-badge-value">
-                  {addedProducts.length}
-                </p>
-              </span>
-            )}
+            {amountCartProducts ? (
+              <div className="header-cart-badge">
+                <p className="header-cart-badge-value">{amountCartProducts}</p>
+              </div>
+            ) : null}
           </button>
         </>
       )}

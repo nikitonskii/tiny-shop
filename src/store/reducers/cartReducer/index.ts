@@ -1,3 +1,4 @@
+import { ProductItem } from "../../../types/products";
 import * as actionTypes from "../../actionTypes/cartActionTypes";
 import * as cartInterfaces from "../../types/cartInterfaces";
 import { CartStateType } from "../../types/statesInterfaces";
@@ -19,11 +20,9 @@ export const cartReducer = (
     case actionTypes.REMOVE_FROM_CART:
       return {
         ...state,
-        addedProducts: [
-          ...state.addedProducts.filter(
-            (item) => item.created !== action.created,
-          ),
-        ],
+        addedProducts: state.addedProducts.filter(
+          (item: ProductItem) => item.created !== action.created,
+        ),
       };
     default:
       return state;

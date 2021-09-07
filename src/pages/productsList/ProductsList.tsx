@@ -22,34 +22,17 @@ const ProductsList: React.FC = (): JSX.Element => {
     <div className="products-list-container">
       {isLoaded && !error ? (
         <Masonry className="products-list-gallery" elementType="ul">
-          {results?.map((product: ProductItem, index: number) => {
-            if (index % 2 === 0) {
-              return (
-                <li className="product-list-wrapper" key={product.created}>
-                  <ProductCard
-                    name={product.name}
-                    model={product.model}
-                    cost_in_credits={product.cost_in_credits}
-                    vehicle_class={product.vehicle_class}
-                    created={product.created}
-                  />
-                </li>
-              );
-            } else {
-              return (
-                <li className="product-list-wrapper" key={product.created}>
-                  <ProductCard
-                    name={product.name}
-                    model={product.model}
-                    cost_in_credits={product.cost_in_credits}
-                    vehicle_class={product.vehicle_class}
-                    created={product.created}
-                    cargo_capacity={product.cargo_capacity}
-                  />
-                </li>
-              );
-            }
-          })}
+          {results?.map((product: ProductItem, index: number) =>
+            index % 2 === 0 ? (
+              <li className="product-list-wrapper" key={product.created}>
+                <ProductCard {...product} cargo_capacity="" />
+              </li>
+            ) : (
+              <li className="product-list-wrapper" key={product.created}>
+                <ProductCard {...product} />
+              </li>
+            ),
+          )}
         </Masonry>
       ) : (
         <h2>Loading .....</h2>
