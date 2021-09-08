@@ -15,4 +15,5 @@ export interface ProductItem {
   created: string;
   edited?: string;
   url?: string;
+  isDisabled?: boolean;
 }

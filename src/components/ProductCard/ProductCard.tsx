@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
+import Button from "../Button";
+
+import { ButtonTypes } from "../Button/types";
 import { ProductItem } from "../../types/products";
+import { CartProduct } from "../../types/cartProduct";
 
 import logo from "../../assets/images/logo.svg";
 
@@ -14,15 +18,18 @@ const ProductCard: React.FC<ProductItem> = ({
   vehicle_class,
   cargo_capacity,
   created,
+  isDisabled,
 }): JSX.Element => {
-  const [productInfo, setProductInfo] = useState<ProductItem>({
+  const [productInfo, setProductInfo] = useState<CartProduct>({
     name,
     model,
     cost_in_credits,
     vehicle_class,
     cargo_capacity,
     created,
+    quantity: 1,
   });
+
   const dispatch = useDispatch();
 
   const addCart = () => dispatch(cartActions.addToCart(productInfo));
@@ -53,7 +60,12 @@ const ProductCard: React.FC<ProductItem> = ({
           {cargo_capacity}
         </p>
       )}
-      <button onClick={addCart}>Add to cart</button>
+      <Button
+        title="Add to cart"
+        buttonType={ButtonTypes.button}
+        isDisabled={isDisabled}
+        onClick={addCart}
+      ></Button>
     </div>
   );
 };

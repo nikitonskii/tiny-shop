@@ -1,3 +1,4 @@
+import { CartProduct } from "../../types/cartProduct";
 import { ProductItem } from "../../types/products";
 
 // AUTH
@@ -22,5 +23,5 @@ export interface ProductsStateType {
 
 // CART
 export interface CartStateType {
-  addedProducts: ProductItem[];
+  addedProducts: CartProduct[];
 }
