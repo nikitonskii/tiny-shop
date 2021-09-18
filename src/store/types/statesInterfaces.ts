@@ -1,3 +1,4 @@
+import { CartProduct } from "../../types/cartProduct";
 import { ProductItem } from "../../types/products";
 
 // AUTH
@@ -18,4 +19,9 @@ export interface ProductsStateType {
   results: ProductItem[] | null;
   error?: string | Error | null;
   isLoaded: boolean;
+}
+
+// CART
+export interface CartStateType {
+  addedProducts: CartProduct[];
 }

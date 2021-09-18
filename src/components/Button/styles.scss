@@ -13,3 +13,6 @@
   outline: none;
   cursor: pointer;
 }
+.disabled {
+  background-color: $icon-input-color;
+}

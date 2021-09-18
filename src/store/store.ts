@@ -6,7 +6,7 @@ import rootReducer from "./reducers";
 
 import * as utils from "../utils";
 
-const persistedState = utils.loadState("authState");
+const persistedState = utils.loadState("state");
 
 const store = createStore(
   rootReducer,
@@ -19,8 +19,9 @@ store.subscribe(
     utils.saveState(
       {
         auth: store.getState().auth,
+        cart: store.getState().cart,
       },
-      "authState",
+      "state",
     );
   }, 1000),
 );

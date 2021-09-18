@@ -1,9 +1,9 @@
 import React from "react";
 
 const Footer: React.FC = (): JSX.Element => (
-  <div className="footer-container">
+  <footer className="footer-container">
     <h1>The best toys only here </h1>
-  </div>
+  </footer>
 );
 
 export default Footer;

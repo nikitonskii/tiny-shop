@@ -6,9 +6,15 @@ const Button: React.FC<IButtonProps> = ({
   buttonType,
   onClick,
   title,
+  isDisabled,
 }): JSX.Element => {
   return (
-    <button className="button" type={buttonType} onClick={onClick}>
+    <button
+      disabled={isDisabled}
+      className={isDisabled ? "disabled button" : "button"}
+      type={buttonType}
+      onClick={onClick}
+    >
       {title}
     </button>
   );

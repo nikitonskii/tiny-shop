@@ -1,19 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
-import { ProductCardProps } from "./types";
+import Button from "../Button";
+
+import { ButtonTypes } from "../Button/types";
+import { ProductItem } from "../../types/products";
+import { CartProduct } from "../../types/cartProduct";
 
 import logo from "../../assets/images/logo.svg";
 
-const ProductCard: React.FC<ProductCardProps> = ({
+import { cartActions } from "../../store/actions/cartActions/setCart";
+
+const ProductCard: React.FC<ProductItem> = ({
   name,
   model,
   cost_in_credits,
   vehicle_class,
   cargo_capacity,
   created,
+  isDisabled,
 }): JSX.Element => {
+  const [productInfo, setProductInfo] = useState<CartProduct>({
+    name,
+    model,
+    cost_in_credits,
+    vehicle_class,
+    cargo_capacity,
+    created,
+    quantity: 1,
+  });
+
+  const dispatch = useDispatch();
+
+  const addCart = () => dispatch(cartActions.addToCart(productInfo));
+
   return (
-    <div className="product-card-container" key={created}>
+    <div className="product-card-container" key={`${created} + ${name}`}>
       <h4 className="product-card-title">{name}</h4>
       <div className="product-card-image-wrapper">
         <img src={logo} alt="react" className="product-card-image card-logo" />
@@ -38,6 +60,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
           {cargo_capacity}
         </p>
       )}
+      <Button
+        title="Add to cart"
+        buttonType={ButtonTypes.button}
+        isDisabled={isDisabled}
+        onClick={addCart}
+      ></Button>
     </div>
   );
 };
